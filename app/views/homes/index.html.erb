@@ -1,0 +1,17 @@
+<h1>Homes#index</h1>
+<p>Find me in app/views/homes/index.html.erb</p>
+
+<%= link_to "[new_icon]", new_home_path %>
+<% if not notice.nil? then %>
+<p style="font-size: 50px; color: forestgreen;"><%= notice %></p>
+<% end %>
+
+<h2>登録Icon一覧（現在：<%= @icons.count%>件）</h2>
+<% @icons.each_with_index do |icon, idx| %>
+<p>
+  <b>No. <%=  idx + 1 %></b><br>
+  Name: <%= icon.name %><br>
+  Introduction: <%= icon.introduction %>
+</p>
+
+<% end %>

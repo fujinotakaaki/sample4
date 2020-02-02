@@ -1,0 +1,20 @@
+<h1>Homes#new</h1>
+<p>Find me in app/views/homes/new.html.erb</p>
+
+<h2>新規投稿（入力フォーム）</h2>
+<% if @icon.errors.any? then %>
+<h2><%= @icon.errors.count  %>件のエラーがあります。</h2>
+<ul>
+  <% @icon.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
+
+<%= form_for(@icon, url: homes_path) do |icon| %>
+<span>　名前　:</span><%= icon.text_field :name %><br>
+<span>　本文　:</span><%= icon.text_area :introduction %><br>
+<%= icon.submit '[投稿] '%><br>
+<%= link_to '[戻る]', homes_path %>
+<% end %>
