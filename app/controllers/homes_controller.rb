@@ -16,6 +16,9 @@ class HomesController < ApplicationController
     @icons = Icon.all
   end
 
+  def game
+  end
+
   private
   def icon_params
     params.require(:icon).permit(:name, :introduction)
