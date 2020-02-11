@@ -2,11 +2,13 @@
 // js版メインのライフゲームコード
 class LifeGame {
   // デフォルトなんてない =>時計になります
-  constructor( name = "default", options={ reverse:false, rotate:false} ){
+  constructor( name = "default", options={ reverse:false, rotate:false, alive:"#", dead:"." } ){
     // 生きたセルの表記
-    this.alive = "#";
+    this.alive = options.alive; // options['alive']も表記としてOK
     // 死んだセルの表記
-    this.dead = ".";
+    // （※プログラムのせいで、死んだセルは"#"に変更すると、正しく動作しません。）
+    // this.dead = '.'; // デフォルトの設定
+    this.dead = options.dead; // options['dead']も表記としてOK
     // # 現世代配列
     this.map = new Array;
     // # 新世代配列
@@ -61,12 +63,12 @@ class LifeGame {
     while ( around.length != 0 ) {
       var [t,s] = around.shift();
       // 生きたセルがあればカウントアップ
-      if ( this.InOrOut(t,s) && this.map[t][s]==this.alive ) { cell_count++; }
+      if ( this.InOrOut(t,s) && !this.AliveCellJudge(t,s) ) { cell_count++; }
     }
     // 返す値のデフォルトの設定
     var str = this.alive;
     // 次世代の対象セルの状態決定
-    if ( cell_count != 3 && (cell_count!=2 || this.map[y][x]!=this.alive) ) { str = this.dead; }
+    if ( cell_count != 3 && (cell_count!=2 || this.AliveCellJudge(y,x)) ) { str = this.dead; }
     return str;
   }
   // 周辺セル座標の配列作成
@@ -80,9 +82,11 @@ class LifeGame {
     return arr;
   }
 
-  // AliveCellJudge(y,x) {
-  //
-  // }
+  AliveCellJudge(y,x) {
+    // return !( this.map[y][x]==this.alive );
+    var alive = this.map[y][x];
+    return !( alive==this.alive || alive=="#" );
+  }
 
   // マップ内外判定
   InOrOut(y,x) {

@@ -16,6 +16,9 @@
 //= require life_game_map
 //= require life_game
 
+// ライフゲームに関する簡単な設定変更はここで行う
+// 細かい設定は下記リンクをいじる
+// app/assets/javascripts/life_game.js
 // 秒数カウント用変数
 var generation;
 // ライフゲームを格納する変数
@@ -23,9 +26,9 @@ var life_game;
 // 呼び出す盤面（デフォルトはグライダー銃）
 const name = 'グライダー銃';
 // １単位時間の設定
-const interval = 100;
-// オプション（反転だけ実装済み、回転はまだ）
-const options = { reverse:false }
+const interval = 80;
+// オプション（反転だけ実装済み、回転はまだ、生死セルの変更も可能）
+const options = { reverse:false, alive:"■", dead:"□" }
 // 繰り返し処理の中身
 function showPassage() {
   if ( generation != 0 ) { life_game.UpDate; }
