@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+ .lifegame {
+   color: white;
+   background-color: black;
+   font-size: 1em;
+   margin: 0 auto;
+   text-align: center;
+   font-variant-east-asian: full-width;
+   -moz-font-feature-settings: "fwid";
+   -webkit-font-feature-settings: "fwid";
+   font-feature-settings: "fwid";
+ }

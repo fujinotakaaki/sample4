@@ -1,3 +1,10 @@
 <h1>Homes#game</h1>
 <p>Find me in app/views/homes/game.html.erb</p>
-<%= link_to '[戻る]', homes_path %>
+<%= link_to '[HOME]', homes_path %>
+
+<p>
+   <input type="button" value="カウント開始" id="startcount" onclick="startShowing();">
+   <input type="button" value="カウント停止" id="endcount" onclick="stopShowing();">
+</p>
+<p id="PassageArea">(ここにカウントが表示されます)</p>
+<p id="PassageArea2", class="lifegame">(ここにライフゲームが表示されます)</p>
