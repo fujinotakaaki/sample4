@@ -2,7 +2,7 @@
 // js版メインのライフゲームコード
 class LifeGame {
   // デフォルトなんてない =>時計になります
-  constructor( name = "default", options={ reverse:false, rotate:false, alive:"#", dead:"." } ){
+  constructor( name = "default", options={ alive:"#", dead:"." } ){
     // 生きたセルの表記
     this.alive = options.alive; // options['alive']も表記としてOK
     // 死んだセルの表記
@@ -47,7 +47,7 @@ class LifeGame {
       this.new_map.push(row);
     }
     // 新世代を現在世代に反映
-    this.map = this.new_map
+    this.map = this.new_map;
     // # 新世代配列
     this.new_map = new Array;
   }

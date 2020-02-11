@@ -24,11 +24,14 @@ var generation;
 // ライフゲームを格納する変数
 var life_game;
 // 呼び出す盤面（デフォルトはグライダー銃）
-const name = 'グライダー銃';
+const pattern = ["Clock1", "Clock2", "GliderGun", "Pentadecathlon", "Pinwhell", "Pulsar", "Pulsarx2", "Galaxy", 'HertzOscillator', 'Galaxyx2', 'Galaxyx2x'];
+// const name = pattern[pattern.length-1];
+const name = pattern[pattern.length-1];
+
 // １単位時間の設定
-const interval = 80;
+const interval = 100;
 // オプション（反転だけ実装済み、回転はまだ、生死セルの変更も可能）
-const options = { reverse:false, alive:"■", dead:"□" }
+const options = { alive:'□', dead:'■', upside_down:false, flip:false, rotate:0 }
 // 繰り返し処理の中身
 function showPassage() {
   if ( generation != 0 ) { life_game.UpDate; }
