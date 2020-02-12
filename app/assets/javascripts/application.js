@@ -19,7 +19,7 @@
 
 // 繰り返し処理の中身
 function showPassage() {
-  var msg = "第" + generation + "世代";   // 表示文作成
+  var msg = "第" + generation + "世代?";   // 表示文作成
   var msg1 = "Success";
   document.getElementById("PassageArea").innerHTML = msg; // 表示更新
   document.getElementById("PassageArea2").innerHTML = msg1; // 表示更新
