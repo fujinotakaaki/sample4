@@ -122,7 +122,7 @@ var life_game = new LifeGame();
 // 繰り返し処理の中身
 function showPassage() {
   if ( generation != 0 ) { life_game.UpDate; }
-  var msg = "第" + generation + "世代（ 60P312 ）";   // 表示文作成
+  var msg = "第" + generation + "世代（ 60P312 ）";   // 表示文作成d
   var msg1 = life_game.GetMap;
   document.getElementById("PassageArea").innerHTML = msg; // 表示更新
   document.getElementById("PassageArea2").innerHTML = msg1; // 表示更新
