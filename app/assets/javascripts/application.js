@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-// js版メインのライフゲームコード
+// js版メインのライフゲームコードkf
 let LifeGame = class {
   // デフォルトなんてない =>時計になります
   constructor( name = "default", options={ alive:"#", dead:"." } ){
