@@ -4,11 +4,12 @@ class LifeGame {
   // デフォルトなんてない =>時計になります
   constructor( name = "default", options={ alive:"#", dead:"." } ){
     // 生きたセルの表記
-    this.alive = options.alive; // options['alive']も表記としてOK
+    if ( options.alive==undefined ) { this.alive = "#"; }
+    else{ this.alive = options.alive; } // options['alive']も表記としてOK
     // 死んだセルの表記
-    // （※プログラムのせいで、死んだセルは"#"に変更すると、正しく動作しません。）
-    // this.dead = '.'; // デフォルトの設定
-    this.dead = options.dead; // options['dead']も表記としてOK
+    // （※死んだセルは"#"に変更すると、正しく動作しません。）
+    if ( options.dead==undefined ) { this.dead = "."; }
+    else{ this.dead = options.dead; } // options['dead']も表記としてOK
     // # 現世代配列
     this.map = new Array;
     // # 新世代配列

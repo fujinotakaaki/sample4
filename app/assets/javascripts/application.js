@@ -24,18 +24,25 @@ var generation;
 // ライフゲームを格納する変数
 var life_game;
 // 呼び出す盤面（デフォルトはグライダー銃）
-const pattern = ["Clock1", "Clock2", "GliderGun", "Pentadecathlon", "Pinwhell", "Pulsar", "Pulsarx2", "Galaxy", 'HertzOscillator', 'Galaxyx2', 'Galaxyx2x'];
-// const name = pattern[pattern.length-1];
+const pattern = ["Clock1", "Clock2", "GliderGun", "Pentadecathlon", "Pinwhell", "Pulsar", "Pulsarx2", "Galaxy",
+'HertzOscillator', 'Galaxyx2', 'Galaxyx2x', 'Coe\'s_p8', 'Achim\'s_p8', 'Achim\'s_p144', '60P312'];
 const name = pattern[pattern.length-1];
+// const name = pattern[2];
 
 // １単位時間の設定
-const interval = 100;
-// オプション（反転だけ実装済み、回転はまだ、生死セルの変更も可能）
-const options = { alive:'□', dead:'■', upside_down:false, flip:false, rotate:0 }
+const interval = 80;
+// オプション（上下左右反転、生死セル表示の変更可。回転はまだ）
+var options; //オプションなしがデフォルト（コメントアウト解除でオプションの設定が可能）
+options = { alive:'■', dead:'□', upside_down:false, flip:false, rotate:0 };
+// options = { alive:'■', flip:true };
+// options = { alive:'生', dead:'　', upside_down:false, flip:false, rotate:0 };
+
 // 繰り返し処理の中身
 function showPassage() {
   if ( generation != 0 ) { life_game.UpDate; }
-  else { life_game = new LifeGame( name, options ); }
+  else {
+    life_game = new LifeGame( name, options );
+  }
   var msg = "第" + generation + "世代（" + name + "）";   // 表示文作成
   var msg1 = life_game.GetMap;
   document.getElementById("PassageArea").innerHTML = msg; // 表示更新
