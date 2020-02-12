@@ -16,7 +16,7 @@
 //= require_tree .
 
 // js版メインのライフゲームコード
-let LifeGame =  class {
+let LifeGame = class {
   // デフォルトなんてない =>時計になります
   constructor( name = "default", options={ alive:"#", dead:"." } ){
     // 生きたセルの表記
@@ -117,10 +117,10 @@ let LifeGame =  class {
 // 世代変数
 var generation;
 // ライフゲームを格納する変数
-var life_game = new LifeGame();
-
+const life_game = new LifeGame();
 // 繰り返し処理の中身
 function showPassage() {
+  // const life_game = new LifeGame();
   if ( generation != 0 ) { life_game.UpDate; }
   var msg = "第" + generation + "世代（ 60P312 ）";   // 表示文作成d
   var msg1 = life_game.GetMap;
