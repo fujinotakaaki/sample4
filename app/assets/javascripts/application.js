@@ -10,11 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require life_game_map
+//= require life_game
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require life_game_map
-//= require life_game
 //= require_tree .
 
 // ライフゲームに関する簡単な設定変更はここで行う
