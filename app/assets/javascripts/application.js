@@ -14,7 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
+/*
 // js版メインのライフゲームコード
 class LifeGame {
   // デフォルトなんてない =>時計になります
@@ -112,23 +112,23 @@ class LifeGame {
     return (0<=y && y<this.height && 0<=x && x<this.width);
   }
 } // class
-
+*/
 
 // 世代変数
 var generation;
 // ライフゲームを格納する変数
-var life_game;
+// var life_game;
 
 // 繰り返し処理の中身
 function showPassage() {
-  if ( generation != 0 ) { life_game.UpDate; }
-  else {
-    life_game = new LifeGame();
-  }
+  // if ( generation != 0 ) { life_game.UpDate; }
+  // else {
+  //   life_game = new LifeGame();
+  // }
   var msg = "第" + generation + "世代（ 60P312 ）";   // 表示文作成
-  var msg1 = life_game.GetMap;
+  // var msg1 = life_game.GetMap;
   document.getElementById("PassageArea").innerHTML = msg; // 表示更新
-  document.getElementById("PassageArea2").innerHTML = msg1; // 表示更新
+  // document.getElementById("PassageArea2").innerHTML = msg1; // 表示更新
   generation++;   // カウントアップ
 }
 
