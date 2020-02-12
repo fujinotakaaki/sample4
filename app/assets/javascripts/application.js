@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require life_game_map
 //= require life_game
+//= require_tree .
 
 // ライフゲームに関する簡単な設定変更はここで行う
 // 細かい設定は下記リンクをいじる
