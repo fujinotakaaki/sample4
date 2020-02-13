@@ -21,22 +21,21 @@
 // 世代記憶変数
 var generation;
 // ##########使用する盤面の設定（デフォルトはグライダー銃）##########
-const name = 'Mix';
-// const pattern = ['Clock1', 'Clock2', 'GliderGun', 'Pentadecathlon', 'Pinwhell', 'Pulsar', 'Pulsarx2', 'Galaxy',
-// 'HertzOscillator', 'Galaxyx2', 'Galaxyx2x', 'Coe\'s_p8', 'Achim\'s_p8', 'Achim\'s_p144', '60P312', 'Mix'];
-// const name = pattern[pattern.length-1];
+// const name = 'Mix';
+const pattern = ['Clock1', 'Clock2', 'GliderGun', 'Pentadecathlon', 'Pinwhell', 'Pulsar', 'Pulsarx2', 'Galaxy', 'HertzOscillator', 'Galaxyx2', 'Galaxyx2x', 'Coe\'s_p8', 'Achim\'s_p8', 'Achim\'s_p144', '60P312', 'Mix', 'QueenBeeLoop'];
+const name = pattern[pattern.length-1];
 
 // ##########オプション（上下左右反転、生死セル表示の変更可。回転はまだ）##########
 var options = new Object; //オプションなしがデフォルト（コメントアウト解除でオプションの設定が可能）
 // options = { alive:'#', dead:'.', upside_down:false, flip:false, rotate:0 }; // 実装済みオプションとデフォルト値
-options = { alive:'■', dead:'□' }; // ■□マス表示
+// options = { alive:'■', dead:'□' }; // ■□マス表示
 // options = { alive:'■', flip:true };
-// options = { alive:'生', dead:'　' }; // 生きてるセルだけ表示
+options = { alive:'生', dead:'　' }; // 生きてるセルだけ表示
 // 単独設定
 // options.alive = '生'; // 生状態セル表示
 // options.dead = '　'; // 死状態セル表示
-options.upside_down = true; // 上下反転表示
-options.flip = true; // 左右反転表示
+// options.upside_down = true; // 上下反転表示
+// options.flip = true; // 左右反転表示
 // options.rotate = 0; // 回転表示（反時計回りに options.rotate x 90度回転）
 
 // ##########世代交代のインターバル設定##########

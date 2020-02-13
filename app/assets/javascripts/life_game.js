@@ -11,12 +11,15 @@ class LifeGame {
     }
     else { this.alive = options.alive; } // options['alive']も表記としてOK
     // 死んだセルの表記
-    // （※死んだセルは"#"に変更すると、正しく動作しません。）
     if ( options.dead==undefined || options.dead.length!=1) {
       console.log( 'options.deadに問題があります。 => ', options.dead );
       this.dead = '.';
     }
     else { this.dead = options.dead; } // options['dead']も表記としてOK
+    if ( this.alive==this.dead ) {
+      this.alive='#';
+      this.dead='.';
+    }
     // # 現世代配列
     this.map = new Array;
     // # 新世代配列
