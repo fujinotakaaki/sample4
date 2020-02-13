@@ -114,9 +114,38 @@ class LifeGameMap {
         // 一時データに反転して保存
         bord_reverse.push( row.split('').reverse().join('') );
       }
-      return bord_reverse;
+      bord = bord_reverse;
+    }
+    // 回転反転処理
+    if ( options.rotate != 0 ) {
+      const i = options.rotate%4
+      if ( isNaN(i) );
+      else {
+        for ( let j=0; j<i; j++ ){
+          bord = this.MapRotation( bord );
+        }
+      }
     }
     return bord;
+  }
+
+  MapRotation( map ) {
+    // console.log('<br>start<br>');
+    // 回転後の盤面格納変数
+    var rotated_map = new Array;
+    const height = map.length;
+    const width = map[0].length;
+    for ( let x=width-1; x>=0; x-- ) {
+      var row = '';
+      for ( let y=0; y<height; y++ ) {
+        row = row.concat(map[y].split('')[x])
+      }
+      rotated_map.push( row )
+    }
+    // console.log('<br>finish<br>');
+    return rotated_map;
+    // this.map = new Array( width ).fill('あれれれ？？？');
+    // this.Print();
   }
 }
 // var initial_map = new LifeGameMap( 'pulsarx2' );

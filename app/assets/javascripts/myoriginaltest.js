@@ -1,55 +1,40 @@
 
 class Test{
   constructor(){
-    console.log('uno');
+    console.log('constructor_perfomed<br>');
     this.alive = "X"
     this.dead = "Y"
-    this.map = ["......##....", "......##....", "............", "....####....", "##.#....#...", "##.#.##.#...", "...#...##.##", "...#....#.##", "....####....", "............", "....##......", "....##......"];
+    // this.map = ["......##....", "......##....", "............", "....####....", "##.#....#...", "##.#.##.#...", "...#...##.##", "...#....#.##", "....####....", "............", "....##......", "....##......"];
+    this.map = ["..................", "..................", "..................", "..................", "......#....#......", ".....##....##.....", "......#....#......", "..................", "..................", "..................", ".................."];
   }
 
   get play(){
-    this.ChangeInitialMap();
+    this.Print();
+    console.log();
+    this.MapRotation( 7 );
   }
 
-  ChangeInitialMap() {
-    console.log('start');
-    // 盤面更新後の格納変数
-    var apply_format_map = new Array;
-    // 更新前の盤面の各行
-    var row1 = new Array;
-    // 更新前の盤面の各行を配列にsplitしたもの
-    var row2 = new String;
-    // 生状態表示
-    const alive = this.alive;
-    // 死状態表示
-    const dead = this.dead;
-    // 変更する文字列を格納する変数
-    var char = new String
-    // 各行取得処理
-    while ( this.map.length !=0 ) {
-      // 各行取得
-      row1 = this.map.shift()
-      // row1書き出し
-      console.log('row1=', row1);
-      // 各行配列化合
-      row2 = row1.split('');
-      // row2書き出し
-      console.log('row2=', row2);
-      // 更新後の行の文字列化
-      var row3 = new String;
-      // 文字列化された行を先頭から処理
-      while (row2.length != 0) {
-        // 変換する文字の決定
-        if ( row2.shift() == "#") { char = alive; }
-        else { char = dead; }
-        // 更新後の行にセルの状態を追加
-        row3 = row3.concat( char )
+  Print(){
+    console.log(this.map.join('<br>'))
+  }
+
+  MapRotation( rot = 0 ) {
+    console.log('<br>start<br>');
+    // 回転後の盤面格納変数
+    var rotated_map = new Array;
+    const height = this.map.length;
+    const width = this.map[0].length;
+    for ( let x=width-1; x>=0; x-- ) {
+      var row = '';
+      for ( let y=0; y<height; y++ ) {
+        row = row.concat(this.map[y].split('')[x])
       }
-      // row3書き出し
-      console.log('row3=', row3);
-      apply_format_map.push( row3 )
+      rotated_map.push( row )
     }
-    console.log('finish');
+    console.log('<br>finish<br>');
+    this.map = rotated_map
+    // this.map = new Array( width ).fill('あれれれ？？？');
+    this.Print();
   }
 }
 // const ss = new Test;
