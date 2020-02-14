@@ -8,8 +8,11 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<input  name="arr_json" value="unchi" class='arr_json' />
+
 <header>
+  <% flash.each do |key, value| %>
+  <p><span style="font-size: 30px; color: forestgreen;" onclick="this.style.backgroundColor='palegreen'"><%= value %></span></p>
+  <% end %>
 </header>
 
 <body>

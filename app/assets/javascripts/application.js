@@ -18,31 +18,21 @@
 //= require turbolinks
 //= require_tree .
 
-// 世代記憶変数（ここで宣言しないと必ずエラーになる）
-// 関数内で宣言しても無意味だった（if文でundefinedだったら値を入れる方法も通じなかった）
-// ただ、intervalいけた
-var generation; //宣言なくてもいけるやん
+// 世代記憶変数
+var generation = 0;
 
 // 繰り返し処理の中身
 function showPassage() {
-  var msg = '第' + generation + '世代（' + options.name + '）';   // 世代表示文作成
+  var msg = '第' + generation + '世代（ No.' + ( life_game_number + 1) + ' : ' + options.name + '）';   // 世代表示文作成
   document.getElementById('PassageArea').innerHTML = msg; // 世代表示更新
   document.getElementById('PassageArea2').innerHTML = life_game.GetMap; // 盤面更新
   generation++;   // カウントアップ
   life_game.UpDate; // 世代交代
-  // for ( let i = 0; i<3; i++ ) {// スキップ処理
-  //   generation++;
-  //   life_game.UpDate;
-  // }
 }
 
 // 繰り返し処理の開始
 function startShowing() {
-  generation = 0;   // カウンタのリセット（ここでvar宣言するとエラー吐く、宣言しなくてもいけるくせに、、、）
-  // if ( isNaN(interval) ) { var interval = 500; }
-  // この文があるとエラーintervalがundefined扱いになる（なんで？）
-  // なぜかconstだとエラーになる
-  PassageID = setInterval('showPassage()', interval);   // タイマーをセット(1000ms間隔)
+  PassageID = setInterval('showPassage()', interval);   // 世代交代の間隔の設定
   document.getElementById('startcount').disabled = true;   // 開始ボタンの無効化
 }
 
@@ -52,24 +42,20 @@ function stopShowing() {
   document.getElementById('startcount').disabled = false;   // 開始ボタンの有効化
 }
 
+// 盤面変更処理
+function next_map() {
+  generation = 0;
+  life_game_number++
+  life_game_number = life_game_number%pattern_count
+  options.name = pattern[life_game_number];
+  life_game = new LifeGame( options );
+}
+
 // #########################################################################################
 // #########################################################################################
-$(function(){
-  $('.box1').css({
-    'background-color': '#889464',
-    'height': '114px',
-    'width': '514px'
-  });
-});
 $(function(){
   $('h1').css({
-    'background-color': 'forestgreen',
-    'color': 'red'
-  });
-});
-
-$(function() {
-  $('.box1').on('click', function() {
-    $(this).slideUp(800);
+    'background-color': 'lightgreen',
+    'color': 'dimgray'
   });
 });

@@ -16,5 +16,10 @@
 <span>　名前　:</span><%= icon.text_field :name %><br>
 <span>　本文　:</span><%= icon.text_area :introduction %><br>
 <%= icon.submit '[投稿] '%><br>
-<%= link_to '[戻る]', homes_path %>
 <% end %>
+<%= form_for(@icon, url: homes_path) do |icon| %>
+<%= icon.hidden_field :name, :value => random_strings(10) %>
+<%= icon.hidden_field :introduction, value:random_strings(30) %><br>
+<%= icon.submit '[適当な内容を投稿] '%>
+<% end %>
+<%= link_to ' [戻る]', homes_path %>

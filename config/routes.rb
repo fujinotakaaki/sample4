@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :homes, only: [:new, :create, :index]
+  resources :homes, only: [:new, :create, :index, :destroy]
   root 'homes#index'
   # get '/new', to: 'homes#new'
   # get '/index', to: 'homes#index'

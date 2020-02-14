@@ -6,7 +6,8 @@ class HomesController < ApplicationController
   def create
     @icon = Icon.new( icon_params )
     if @icon.save then
-      redirect_to homes_path, notice: "Your icon are recieved!! Thank you!!"
+      flash[:success]=%q?We recieved your icon. Thank you!!?
+      redirect_to homes_path
     else
       render :new
     end
@@ -14,6 +15,13 @@ class HomesController < ApplicationController
 
   def index
     @icons = Icon.all
+  end
+
+  def destroy
+    icon = Icon.find(params[:id])
+    flash[:destroy]=%q?selected icon deleted successfully!!?
+    icon.destroy
+    redirect_to homes_path
   end
 
   def game

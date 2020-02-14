@@ -14,14 +14,18 @@
  *= require_self
  */
 
+
  .lifegame {
-   color: limegreen;
-   background-color: black;
-   font-size: 0.7em;
+   padding: 30px 10px;
    margin: 0 auto;
    text-align: center;
-   font-variant-east-asian: full-width;
+   color: limegreen;
+   background-color: black;
+   font-size: 1em;
+   line-height: 1em;
+   letter-spacing: 0em;
+   /* font-variant-east-asian: full-width;
    -moz-font-feature-settings: "fwid";
    -webkit-font-feature-settings: "fwid";
-   font-feature-settings: "fwid";
+   font-feature-settings: "fwid"; */
  }
