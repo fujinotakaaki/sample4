@@ -2,7 +2,7 @@
 // js版メインのライフゲームコード
 class LifeGame {
   // デフォルトなんてない => グライダー銃になります
-  constructor( name = 'default', options={ alive:'#', dead:'.' } ) {
+  constructor( options={ alive:'#', dead:'.' } ) {
     console.log( 'options = ', options )
     // 生きたセルの表記
     if ( options.alive==undefined || options.alive.length!=1 ) {
@@ -26,7 +26,7 @@ class LifeGame {
     this.new_map = new Array;
 
     // 初期盤面ロード・格納
-    this.map = new LifeGameMap( name, options );
+    this.map = new LifeGameMap( options );
     // 高さ決定
     this.height = this.map.length;
     // 幅決定
@@ -140,6 +140,6 @@ class LifeGame {
     }
     // console.log('finish');
     this.map = apply_format_map;
-    console.log( this.map );
+    // console.log( apply_format_map.join("\n") );
   }
 } // class

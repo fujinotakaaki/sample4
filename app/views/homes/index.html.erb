@@ -10,9 +10,25 @@
 <h2>登録Icon一覧（現在：<%= @icons.count%>件）</h2>
 <% @icons.each_with_index do |icon, idx| %>
 <p>
-  <b>No. <%=  idx + 1 %></b><br>
-  Name: <%= icon.name %><br>
+  <span onclick="js_alert()"><b>No. <%=  idx + 1 %></b></span><br>
+  <span onclick="this.style.backgroundColor='yellow', this.style.color='gray'">
+    Name: <%= icon.name %>
+  </span><br>
   Introduction: <%= icon.introduction %>
 </p>
-
 <% end %>
+
+<script>
+  var count = 0;
+  var unit;
+  function js_alert() {
+    count++
+    switch ( count ) {
+      case 1: unit = 'st'; break;
+      case 2: unit = 'nd'; break;
+      case 3: unit = 'rd'; break;
+      default: unit = 'th'; break;
+    }
+    alert( count + unit + " times pushed!");
+  }
+</script>

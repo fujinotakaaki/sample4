@@ -8,3 +8,31 @@
 </p>
 <p id="PassageArea">(ここにカウントが表示されます)</p>
 <p id="PassageArea2", class="lifegame">(ここにライフゲームが表示されます)</p>
+
+<script>
+  // ライフゲームのオプション設定を行う変数（宣言必須項目1）
+  var options = new Object; // デフォルト値 => { name:'', alive:'#', dead:'.', upside_down:false, flip:false, rotate:0 };
+
+  // 単独設定
+  const interval = <%= 100 %>;
+  // const interval = 100; // （宣言必須項目２）
+  // ##########世代交代のインターバル設定##########
+  // options = { alive:'■', dead:'□' }; // ■□マス表示
+  options = { alive:'生', dead:'　' }; // 生きてるセルだけ表示
+  // options.alive = '生'; // 生状態セル表示
+  // options.dead = '　'; // 死状態セル表示
+  // ##########使用する盤面の設定（デフォルトはグライダー銃）##########
+  // options.name = 'Mix' // 非常に苦労したやつ
+  const pattern = ['Clock1', 'Clock2', 'GliderGun', 'Pentadecathlon', 'Pinwhell', 'Pulsar', 'Pulsarx2', 'Galaxy', 'HertzOscillator', 'Galaxyx2', 'Galaxyx2x', 'Coe\'s_p8', 'Achim\'s_p8', 'Achim\'s_p144', '60P312', 'Mix', 'QueenBeeLoop'];
+  options.name = pattern[pattern.length-3];
+  // ##############################################################
+  // すみません、上下反転 => 左右反転 => 回転の順で、処理されます
+  // options.upside_down = true; // 上下反転表示
+  // options.flip = true; // 左右反転表示
+  // options.rotate = 931; // 回転表示（反時計回りに options.rotate x 90度回転）
+  // #########################################################################################
+
+  // ライフゲームを格納する変数（宣言必須項目３）
+  var life_game = new LifeGame( options );
+  // alert( "この表示が出ればライフゲーム が動きます" );
+</script>

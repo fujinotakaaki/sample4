@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery.min
 //= require life_game_map
 //= require life_game
 //= require rails-ujs
@@ -17,38 +18,14 @@
 //= require turbolinks
 //= require_tree .
 
-// #########################################################################################
-// 世代記憶変数
-var generation;
-// ##########使用する盤面の設定（デフォルトはグライダー銃）##########
-const name = 'Mix';
-// const pattern = ['Clock1', 'Clock2', 'GliderGun', 'Pentadecathlon', 'Pinwhell', 'Pulsar', 'Pulsarx2', 'Galaxy', 'HertzOscillator', 'Galaxyx2', 'Galaxyx2x', 'Coe\'s_p8', 'Achim\'s_p8', 'Achim\'s_p144', '60P312', 'Mix', 'QueenBeeLoop'];
-// const name = pattern[pattern.length-1];
-
-// ##########オプション（上下・左右反転、回転、生死セル表示の変更可。）##########
-// すみません、上下反転 => 左右反転 => 回転の順で、処理されます
-var options = new Object; //オプションなしがデフォルト（コメントアウト解除でオプションの設定が可能）
-// options = { alive:'#', dead:'.', upside_down:false, flip:false, rotate:0 }; // 実装済みオプションとデフォルト値
-// options = { alive:'■', dead:'□' }; // ■□マス表示
-// options = { alive:'■', flip:true };
-options = { alive:'生', dead:'　' }; // 生きてるセルだけ表示
-// 単独設定
-// options.alive = '生'; // 生状態セル表示
-// options.dead = '　'; // 死状態セル表示
-// options.upside_down = true; // 上下反転表示
-// options.flip = true; // 左右反転表示
-options.rotate = 9313777; // 回転表示（反時計回りに options.rotate x 90度回転）
-
-// ##########世代交代のインターバル設定##########
-const interval = 100;
-
-// ライフゲームを格納する変数
-var life_game = new LifeGame( name, options );
-// #########################################################################################
+// 世代記憶変数（ここで宣言しないと必ずエラーになる）
+// 関数内で宣言しても無意味だった（if文でundefinedだったら値を入れる方法も通じなかった）
+// ただ、intervalいけた
+var generation; //宣言なくてもいけるやん
 
 // 繰り返し処理の中身
 function showPassage() {
-  var msg = '第' + generation + '世代（' + name + '）';   // 世代表示文作成
+  var msg = '第' + generation + '世代（' + options.name + '）';   // 世代表示文作成
   document.getElementById('PassageArea').innerHTML = msg; // 世代表示更新
   document.getElementById('PassageArea2').innerHTML = life_game.GetMap; // 盤面更新
   generation++;   // カウントアップ
@@ -61,7 +38,10 @@ function showPassage() {
 
 // 繰り返し処理の開始
 function startShowing() {
-  generation = 0;   // カウンタのリセット
+  generation = 0;   // カウンタのリセット（ここでvar宣言するとエラー吐く、宣言しなくてもいけるくせに、、、）
+  // if ( isNaN(interval) ) { var interval = 500; }
+  // この文があるとエラーintervalがundefined扱いになる（なんで？）
+  // なぜかconstだとエラーになる
   PassageID = setInterval('showPassage()', interval);   // タイマーをセット(1000ms間隔)
   document.getElementById('startcount').disabled = true;   // 開始ボタンの無効化
 }
@@ -71,3 +51,25 @@ function stopShowing() {
   clearInterval( PassageID );   // タイマーのクリア
   document.getElementById('startcount').disabled = false;   // 開始ボタンの有効化
 }
+
+// #########################################################################################
+// #########################################################################################
+$(function(){
+  $('.box1').css({
+    'background-color': '#889464',
+    'height': '114px',
+    'width': '514px'
+  });
+});
+$(function(){
+  $('h1').css({
+    'background-color': 'forestgreen',
+    'color': 'red'
+  });
+});
+
+$(function() {
+  $('.box1').on('click', function() {
+    $(this).slideUp(800);
+  });
+});
